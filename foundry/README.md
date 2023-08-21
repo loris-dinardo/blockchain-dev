@@ -1,66 +1,31 @@
-## Foundry
+## Foundry Commands
 
-**Foundry is a blazing fast, portable and modular toolkit for Ethereum application development written in Rust.**
+**Deploy**
 
-Foundry consists of:
-
--   **Forge**: Ethereum testing framework (like Truffle, Hardhat and DappTools).
--   **Cast**: Swiss army knife for interacting with EVM smart contracts, sending transactions and getting chain data.
--   **Anvil**: Local Ethereum node, akin to Ganache, Hardhat Network.
--   **Chisel**: Fast, utilitarian, and verbose solidity REPL.
-
-## Documentation
-
-https://book.getfoundry.sh/
-
-## Usage
-
-### Build
-
-```shell
-$ forge build
+```
+forge script script/<SmartContract>.s.sol --rpc-url $RPC_URL --private-key $PRIVATE_KEY
 ```
 
-### Test
+**Verify**
 
-```shell
-$ forge test
+```
+forge verify-contract <contract_address> <SmartContractName> --watch --chain-id <your_rpc_chain_id>
 ```
 
-### Format
+**Call Smart Contract with Transaction**
 
-```shell
-$ forge fmt
+```
+ cast send <contract_address> "<method_name>(<params>)" <value_params> --rpc-url $RPC_URL --private-key $PRIVATE_KEY
 ```
 
-### Gas Snapshots
+**Call Smart Contract with Call**
 
-```shell
-$ forge snapshot
+```
+ cast call <contract_address> "<method_name>(<params>)" <value_params> --rpc-url $RPC_URL
 ```
 
-### Anvil
+**Convert value returned**
 
-```shell
-$ anvil
 ```
-
-### Deploy
-
-```shell
-$ forge script script/Counter.s.sol:CounterScript --rpc-url <your_rpc_url> --private-key <your_private_key>
-```
-
-### Cast
-
-```shell
-$ cast <subcommand>
-```
-
-### Help
-
-```shell
-$ forge --help
-$ anvil --help
-$ cast --help
+ cast --to-base <0xValue> dec
 ```
